@@ -73,7 +73,7 @@ const hash = getTokenFromUrl();
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
-      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=${redirectUri}`
+      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
       
       // 'https://accounts.spotify.com/authorize?client_id=230be2f46909426b8b80cac36446b52a
