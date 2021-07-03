@@ -1,0 +1,19 @@
+.searcher {
+	display: block;
+	float: right;
+}
+
+.track-search-container {
+	display: block
+}
+
+.searchActive {
+	display: block;
+	float: right;
+	margin-top: -20px;
+	margin-right: 30px;
+	} 
+
+.searchInactive {
+	display: none;
+	}	
