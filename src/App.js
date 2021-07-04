@@ -60,8 +60,9 @@ const App = ({
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 // const clientId = config.API_KEY;
 const clientId = '5d353d31611c4abdbe7420c9a132a044';
-// const redirectUri = 'https://andrewhigton.github.io/spotify-react/';
-const redirectUri = 'http://localhost:3000/';
+//push this through next
+const redirectUri = 'https://andrewhigton.github.io/spotify-react/';
+// const redirectUri = 'http://localhost:3000/';
 const scopes = [
   'user-read-private',
   'user-read-email',
@@ -74,7 +75,7 @@ const hash = getTokenFromUrl();
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
-      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
+      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=${redirectUri}`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
             } else {
       setToken(token);
