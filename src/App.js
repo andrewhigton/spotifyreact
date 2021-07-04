@@ -46,22 +46,26 @@ const App = ({
 };
 
 
-// https://pau1fitz.github.io/react-spotify/
-// #access_token=BQAqRWtf8uK-LS_LcoRfV_FOOJjNPrT7byqLBN3xgKCL71LnGxrMuKKANsDIgMAxjYc5R46mT5rtxnaadhTk7oaX8JvggFZjvfmPzjw-3gCxUezkUMtEzJH4-XVp9w58zMpIdt7bx0ZdwMplnAhXicuXCYWvVmuxAkK2wSv981miNGjxbAJ_mwVtwH1AEqi8whae25jzEqDXZcSrlnD-pQCUTB1hf32nvZeLZhBgry6YpOdKPivf517mA4I_UenEy2FNDSpnSvIVgFY
-// &token_type=Bearer
-// &expires_in=3600
+// fitx
+// https://accounts.spotify.com/en/
+// login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Dplaylist-read-private%
+// 2Bplaylist-read-collaborative%2Bplaylist-modify-public
+// %2Buser-read-recently-played%2Bplaylist-modify-private%2Bugc-image-upload%2Buser-follow-modify%2Buser-follow-read%2Buser-library-read%2Buser-library-modify%2Buser-read-private%2Buser-read-email%2Buser-top-read%2Buser-read-playback-state%26response_type%3Dtoken
+// %26redirect_uri%3Dhttp%253A%252F%252Fpau1fitz.github.io%252Freact-spotify%252F%26client_id
+// %3D230be2f46909426b8b80cac36446b52a
 
-// http://localhost:3000/
-// #access_token=BQBDldSDjj58WljgqXVgzoPW8uQKwdfqMcE72J-zlg0eeBKKyYUYhNnsvwVNDmhTB22qYqBGxW22we1kAwWvKJ-k9PNBizvJb-q4SBHU3mQe5pjQdnZ94JxUNLy_XGK_4HTs3dgB-9oIkduRouKbpVJw200fVOC_vwJSopSpY3OAc8xLgvCXDpfRlNg1sJc5ecUeigML2ePLiDDaX2SMzTY361JDgFhC6XT1iADY_McWwcVKEHX7rP_CgQBYwa4C_A0S2CiCcwtgnU4
-// &token_type=Bearer
-// &expires_in=3600
-
+// mine
+// https://accounts.spotify.com/en/
+// login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-private%
+// 2Buser-read-email%26response_type%3Dtoken
+// %26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252F%26client_id
+// %3D5d353d31611c4abdbe7420c9a132a044%26show_dialog%3Dfalse
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 // const clientId = config.API_KEY;
 const clientId = '5d353d31611c4abdbe7420c9a132a044';
 //push this through next
-const redirectUri = 'https://andrewhigton.github.io/spotify-react/';
+// const redirectUri = 'https://andrewhigton.github.io/spotify-react/';
 // const redirectUri = 'http://localhost:3000/';
 const scopes = [
   'user-read-private',
@@ -75,7 +79,8 @@ const hash = getTokenFromUrl();
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
-      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=${redirectUri}`
+      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=http://localhost:3000/callback`
+      // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=https://andrewhigton.github.io/spotify-react/`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
             } else {
       setToken(token);
