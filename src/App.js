@@ -79,7 +79,7 @@ const hash = getTokenFromUrl();
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
-      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=http://localhost:3000/callback`
+      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=http://localhost:3000/callback/`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=https://andrewhigton.github.io/spotify-react/`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
             } else {
