@@ -58,7 +58,8 @@ const App = ({
 
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
-const clientId = config.API_KEY;
+// const clientId = config.API_KEY;
+const clientId = '5d353d31611c4abdbe7420c9a132a044';
 // const redirectUri = 'https://andrewhigton.github.io/spotify-react/';
 const redirectUri = 'http://localhost:3000/';
 const scopes = [
@@ -75,24 +76,7 @@ const hash = getTokenFromUrl();
     if (!token) {
       window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
-      
-      // 'https://accounts.spotify.com/authorize?client_id=230be2f46909426b8b80cac36446b52a
-      // &scope=playlist-read-private
-      // %20playlist-read-collaborative
-      // %20playlist-modify-public
-      // %20user-read-recently-played
-      // %20playlist-modify-private
-      // %20ugc-image-upload
-      // %20user-follow-modify
-      // %20user-follow-read
-      // %20user-library-read
-      // %20user-library-modify
-      // %20user-read-private
-      // %20user-read-email
-      // %20user-top-read
-      // %20user-read-playback-state&response_type=token
-      // &redirect_uri=http://localhost:3000/callback';
-      } else {
+            } else {
       setToken(token);
       fetchUser(token);
     }
