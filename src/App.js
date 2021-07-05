@@ -45,27 +45,9 @@ const App = ({
     }, {});
 };
 
-
-// fitx
-// https://accounts.spotify.com/en/
-// login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Dplaylist-read-private%
-// 2Bplaylist-read-collaborative%2Bplaylist-modify-public
-// %2Buser-read-recently-played%2Bplaylist-modify-private%2Bugc-image-upload%2Buser-follow-modify%2Buser-follow-read%2Buser-library-read%2Buser-library-modify%2Buser-read-private%2Buser-read-email%2Buser-top-read%2Buser-read-playback-state%26response_type%3Dtoken
-// %26redirect_uri%3Dhttp%253A%252F%252Fpau1fitz.github.io%252Freact-spotify%252F%26client_id
-// %3D230be2f46909426b8b80cac36446b52a
-
-// mine
-// https://accounts.spotify.com/en/
-// login?continue=https:%2F%2Faccounts.spotify.com%2Fauthorize%3Fscope%3Duser-read-private%
-// 2Buser-read-email%26response_type%3Dtoken
-// %26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252F%26client_id
-// %3D5d353d31611c4abdbe7420c9a132a044%26show_dialog%3Dfalse
-
 const authEndpoint = 'https://accounts.spotify.com/authorize';
-// const clientId = config.API_KEY;
-const clientId = '5d353d31611c4abdbe7420c9a132a044';
-//push this through next
-// const redirectUri = 'https://andrewhigton.github.io/spotifyreact/';
+const clientId = config.API_KEY;
+const redirectUri = 'https://andrewhigton.github.io/spotifyreact/';
 // const redirectUri = 'http://localhost:3000/';
 const scopes = [
   'user-read-private',
@@ -79,9 +61,9 @@ const hash = getTokenFromUrl();
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
+        window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
       // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=http://localhost:3000/callback/`
-      window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=https://andrewhigton.github.io/spotifyreact/`
-      // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
+      
             } else {
       setToken(token);
       fetchUser(token);
@@ -91,7 +73,6 @@ const hash = getTokenFromUrl();
   let audio;
 
   useEffect( () => {
-    // fetchFeatured()
     fetchFeatured(token)
   }, [fetchFeatured])
 
