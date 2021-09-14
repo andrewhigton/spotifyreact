@@ -28,18 +28,23 @@ describe('render', () => {
       browseItem: featured
     }
     
-    beforeEach(() => {
-      wrapper = setup({ item: browseItem });
-    })
+    // beforeEach(() => {
+    //   wrapper = setup({ item: browseItem });
+    // })
 
-    test('Browse renders without error', () => {
-      const browseComponent = findByTestAttr(wrapper, 'component-input');
+    test('BrowseView renders without error', () => {
+      const wrapper = setup({ browseItem: 'featured' });      
+      const browseComponent = findByTestAttr(wrapper, 'browse-view');
       expect(browseComponent.length).toBe(1);
     });
-    // test('input box displays', () => {
-    //   const inputBox = findByTestAttr(wrapper, 'input-box');
-    //   expect(inputBox.exists()).toBe(true);
-    // });
+    
+    test('BrowseView does not render if view is false', () => {
+      const wrapper = setup({ view: false });      
+      
+      const browseComponent = findByTestAttr(wrapper, 'browse-view');
+      expect(browseComponent.text()).toBe('please want');
+    });
+
     // test('submit button displays', () => {
     //   const submitButton = findByTestAttr(wrapper, 'submit-button');
     //   expect(submitButton.exists()).toBe(true);

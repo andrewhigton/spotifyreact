@@ -31,7 +31,7 @@ import './BrowseView.css';
       };
       
       return (
-        <div data-test='browse-view'>
+        <div>
           <li onClick={getPlaylistSongs} className='category-item' key={i}>
             <div className='category-image'>
               <img alt='category' src={item.icons ? item.icons[0].url : item.images[0].url} />
@@ -46,9 +46,11 @@ import './BrowseView.css';
   return (
 
       <Fragment>
+      <div data-test='browse-view'>
       {browseView ? <ul className='browse-view-container'>{browseView}</ul>   :
       <p>please wait</p>
       }
+      </div>
       </Fragment>
 
   );

@@ -12,6 +12,7 @@ import { updateHeaderTitle } from '../../actions/userinterfaceActions';
 import { updateViewType } from '../../actions/songActions';
 import './MainHeader.css';
 
+
 const MainHeader = ({user, 
                     updateHeaderTitle, 
                     updateViewType, 
@@ -19,18 +20,16 @@ const MainHeader = ({user,
                     viewType, 
                     token
                   }) => {
+ 
   return (
-      <Fragment> 
+      <div data-test='main-head'> 
         <TrackSearch />
-      <div className='section-title' data-test='main-head'> 
-
+      <div className='section-title'> 
 
        {(headerTitle === 'Browse') && (
-        <div>
-
+        <div data-test='browse-head'>
           <h3 className='header-title'>{headerTitle}</h3>
           <div className='browse-headers'>
-            
             <p 
               className={viewType === 'Featured' ? 'active' : ''} 
               onClick={() => { 
@@ -41,7 +40,7 @@ const MainHeader = ({user,
         </div>
       )}
        </div>
-       </Fragment>
+       </div>
     )
 };
 

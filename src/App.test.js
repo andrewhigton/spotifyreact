@@ -18,29 +18,26 @@ const mockGetSecretWord = jest.fn();
 // 	return shallow(<App />)
 // }
 
-const setup = () => {
-  const store = storeFactory();
-  return mount(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-};
+// const setup = () => {
+//   const store = storeFactory();
+//   return mount(
+//     <Provider store={store}>
+//       <App />
+//     </Provider>
+//   );
+// };
 
 
-// const setUp = (initialState={}) => {
-//   // const store = storeFactory(initialState)
-//   // const wrapper = shallow(<App store={store} /> );
-// } 
+const setUp = (initialState={}) => {
+  const store = storeFactory(initialState)
+  const wrapper = shallow(<App store={store} /> );
+} 
 
-// const findByTestAttr = (wrapper, val) => {
-//   return wrapper.find(`[data-test="${val}"]`);
-// }
-
-test('App renders without error', () => {
-  const wrapper = setup();
+test.skip('App renders without error', () => {
+  const wrapper = setUp();
   const appComponent = findByTestAttr(wrapper, 'component-app')
   expect(appComponent).toHaveLength(1);
+  // expect(App).toHaveLength(1);
 });
 
 // test('Login header renders without error', () => {
@@ -63,28 +60,28 @@ test('App renders without error', () => {
 
 
 
-describe('fetchFeatured calls', () => {
+// describe('fetchFeatured calls', () => {
 	
-     beforeEach(() => {
-     mockFetchFeatured.mockClear();
-   })
+//      beforeEach(() => {
+//      mockFetchFeatured.mockClear();
+//    })
 
-  test('fetchFeatured gets called on App mount', () => {
-		const wrapper = setup();
-		//check to see if secret word was called
+//   test('fetchFeatured gets called on App mount', () => {
+// 		const wrapper = setup();
+// 		//check to see if secret word was called
 	
-    expect(mockFetchFeatured).toHaveBeenCalled();
-		// expect(mockFetchFeatured).toStrictEqual({});
-	})
-	test('fetchFeatured updates on App update', () => {
-		const wrapper = setup();
-		mockFetchFeatured.mockClear();
-		//wrapper.update doesn't trigger update
-		wrapper.setProps();
+//     expect(mockFetchFeatured).toHaveBeenCalled();
+// 		// expect(mockFetchFeatured).toStrictEqual({});
+// 	})
+// 	test('fetchFeatured updates on App update', () => {
+// 		const wrapper = setup();
+// 		mockFetchFeatured.mockClear();
+// 		//wrapper.update doesn't trigger update
+// 		wrapper.setProps();
 
-		expect(mockFetchFeatured).not.toHaveBeenCalled();
-	})
-})
+// 		expect(mockFetchFeatured).not.toHaveBeenCalled();
+// 	})
+// })
 
 
 // describe('secretWord is not null', () => {
