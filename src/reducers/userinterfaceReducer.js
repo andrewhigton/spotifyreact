@@ -9,8 +9,6 @@ const defaultState = {
 
 export const uiReducer = (state = defaultState, action) => {
 //so why isn't it coming through here? 
-
-  // console.log(action);
   switch (action.type) {
     case 'UPDATE_HEADER_TITLE':
       return {

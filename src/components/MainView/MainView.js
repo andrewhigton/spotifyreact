@@ -15,14 +15,13 @@ import './MainView.css';
     pauseSong  
 
     }) => {
-    
+    console.log(headerTitle);
     return (
     <Fragment>
       {headerTitle === "Albums" ? (
         <AlbumList audioControl={audioControl} />
       ) : headerTitle === "Artists" ? (
         <ArtistList />
-        //where does this get updated? 
       ) : headerTitle === "Browse" ? (
         <BrowseView />
       ) : headerTitle === "AlbumSongs" ? (

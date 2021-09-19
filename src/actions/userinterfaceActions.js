@@ -11,7 +11,7 @@ import {
 
 
 export const updateHeaderTitle = (title, dispatch) => {
-// console.log(title)
+console.log(title)
 	  // type: 'UPDATE_HEADER_TITLE',
   	//   title
 return ({	

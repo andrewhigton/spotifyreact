@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
   browse: browseReducer
 })
 
-export default rootReducer
+export default rootReducer;

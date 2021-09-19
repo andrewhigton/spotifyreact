@@ -1,100 +1,83 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { findByTestAttr, checkProps, storeFactory } from '../../../test/testUtils';
 import { Provider } from 'react-redux';
 
 import BrowseView from './BrowseView';
 
-// mock entire module for destructuring useState on import //////
-// const mockSetCurrentGuess = jest.fn();
-// jest.mock('react', () => ({
-//   ...jest.requireActual('react'),
-//   useState: (initialState) => [initialState, mockSetCurrentGuess]
-// }))
+const store = storeFactory();
 
-const setup = (initialState={}) => {
-  
-  
+const setup = (props={}) => {
+  const setUpProps = {...props};
+    // return shallow(<BrowseView {...setUpProps}/>)
+    return mount(<Provider store={store}><BrowseView {...setUpProps}/></Provider>)
+};
 
-  const store = storeFactory();
-  return mount(<Provider store={store}><BrowseView /></Provider>);
-}
 
 describe('render', () => {
 
-    let featured;
     let wrapper;
-    let browseItem = {
-      browseItem: featured
-    }
-    
-    // beforeEach(() => {
-    //   wrapper = setup({ item: browseItem });
-    // })
 
     test('BrowseView renders without error', () => {
-      const wrapper = setup({ browseItem: 'featured' });      
+      const wrapper = setup();      
       const browseComponent = findByTestAttr(wrapper, 'browse-view');
       expect(browseComponent.length).toBe(1);
     });
     
     test('BrowseView does not render if view is false', () => {
-      const wrapper = setup({ view: false });      
-      
+      const wrapper = setup();      
       const browseComponent = findByTestAttr(wrapper, 'browse-view');
-      expect(browseComponent.text()).toBe('please want');
+      expect(browseComponent.text()).toBe('please wait');
     });
-
-    // test('submit button displays', () => {
-    //   const submitButton = findByTestAttr(wrapper, 'submit-button');
-    //   expect(submitButton.exists()).toBe(true);
-    // });
   });
-  // describe('success is true', () => {
-  //   let wrapper;
-  //   beforeEach(() => {
-  //     wrapper = setup({ success: true });
-  //   })
-  //   test('Input renders without error', () => {
-  //     const inputComponent = findByTestAttr(wrapper, 'component-input');
-  //     expect(inputComponent.length).toBe(1);
-  //   });
-  //   test('input box does not display', () => {
-  //     const inputBox = findByTestAttr(wrapper, 'input-box');
-  //     expect(inputBox.exists()).toBe(false);
-  //   });
-  //   test('submit button does not display', () => {
-  //     const submitButton = findByTestAttr(wrapper, 'submit-button');
-  //     expect(submitButton.exists()).toBe(false);
-  //   });
+
+  const playlistTitles = {  browse: ['train', 'agile','party'] };
+
+  const setup1 = (props={}) => {
+  const setUpProps = {...playlistTitles, ...props};
+    // return shallow(<BrowseView {...setUpProps}/>)
+    return mount(<Provider store={store}><BrowseView {...setUpProps}/></Provider>)
+};
+  
+  describe('playlist songs render if `view` is true', () => {
+  
+  let wrapper;
+  const playlistTitles = {  browse: ['train', 'agile','party'] };
+
+  
+  test('playlists render', () => {
+    // const wrapper = setup()
+    const wrapper = setup1();      
+    const playlistComponent = findByTestAttr(wrapper, 'playlist-titles');
+    // expect(playlistComponent.exists()).toBe(true);    
+    expect(playlistComponent).toBe({ browse: ['train', 'agile','party' ] });    
+  });
+  
+  test('playlist renders correct number of titles', () => {
+    const wrapper = setup1();      
+    
+    console.log(wrapper.debug())
+    const guessedWordsNode = findByTestAttr(wrapper, 'playlist-titles');
+    expect(guessedWordsNode.length).toBe(3);    
+  });
+
+  // test('correct number of guessed words', () => {
+  //   const guessedWordNodes = findByTestAttr(wrapper, 'guessed-word');
+  //   expect(guessedWordNodes.length).toBe(guessedWords.length);
   // });
-// });
 
-// test('does not throw warning with expected props', () => {
-//   checkProps(Input, { secretWord: 'party' });
-// })
+  // test('includes guess word index for each word', () => {
+  //   const guessWordIndexes = findByTestAttr(wrapper, 'guessed-word-index');
+  //   const indexTextSet = new Set(guessWordIndexes.map(wrapper => wrapper.text()))
+    
+  //   const expectedSet = new Set(guessedWords.map((word, index) => (index + 1).toString()))
+  //   expect(indexTextSet).toEqual(expectedSet);
+  // });
 
-// describe('state controlled input field', () => {
-//   let mockSetCurrentGuess = jest.fn();
-//   let wrapper;
+  // test('displays correct number of total guesses', () => {
+  //   const totalGuesses = findByTestAttr(wrapper, 'total-guesses');
+   
+  //   expect(totalGuesses.text()).toEqual(guessedWords.length.toString());
+  // });
 
-//   beforeEach(() => {
-//     mockSetCurrentGuess.mockClear();
-//     React.useState = () => ["", mockSetCurrentGuess];
-//     wrapper = setup({ success: false });
-//   });
-//   test('state updates with value of input box upon change', () => {
-//     const inputBox = findByTestAttr(wrapper, 'input-box');
-//     const mockEvent = { target: { value: 'train' } };
-
-//     inputBox.simulate("change", mockEvent);
-//     expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
-//   });
-//   test('field is cleared upon submit button click', () => {
-//     const inputBox = findByTestAttr(wrapper, 'input-box');
-//     const mockEvent = { target: { value: 'train' } };
-
-//     inputBox.simulate("change", mockEvent);
-//     expect(mockSetCurrentGuess).toHaveBeenCalledWith('train');
-//   });
-// })
+})
