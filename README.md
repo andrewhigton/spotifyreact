@@ -26,11 +26,9 @@ Click [here](https://accounts.spotify.com/en/login?continue=https%3A%2F%2Faccoun
 * npm install
 * npm start
 
-## Screenshots: ##
+## Screenshot: ##
 
-## Landing page: ##
-
-
+![image](https://user-images.githubusercontent.com/22149360/212946549-27f814f5-ee73-4480-9451-eca0730a19d0.png)
 
 ## Credits ##
 
