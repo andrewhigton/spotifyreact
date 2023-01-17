@@ -17,8 +17,7 @@ Built using Javascript, React and Redux.
 
 ## On Github Pages ##
 
-Click [here]([quora.com/profile/Ashish-Kulkarni-100](https://accounts.spotify.com/en/login?continue=https%3A%2F%2Faccounts.spotify.com%2Fauthorize%3Fgrant_type%3Dauthorization_code%26scope%3Duser-read-private%2Buser-read-email%2Bplaylist-read-private%2Buser-library-read%2Buser-read-recently-played%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fandrewhigton.github.io%252Fspotifyreact%26client_id%3D5d353d31611c4abdbe7420c9a132a044%26show_dialog%3Dtrue
-)) to see spotifyreact
+Click [here]([quora.com/profile/Ashish-Kulkarni-100](https://accounts.spotify.com/en/login?continue=https%3A%2F%2Faccounts.spotify.com%2Fauthorize%3Fgrant_type%3Dauthorization_code%26scope%3Duser-read-private%2Buser-read-email%2Bplaylist-read-private%2Buser-library-read%2Buser-read-recently-played%26response_type%3Dtoken%26redirect_uri%3Dhttps%253A%252F%252Fandrewhigton.github.io%252Fspotifyreact%26client_id%3D5d353d31611c4abdbe7420c9a132a044%26show_dialog%3Dtrue) to see spotifyreact
 
 
 ## How to run: ##
