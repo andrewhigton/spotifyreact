@@ -8,25 +8,15 @@ import { updateHeaderTitle } from '../../actions/userinterfaceActions';
 import './TrackSearch.css';
 
 const TrackSearch = () => {
-// ({ 
-//     token, 
-//     searchSongs,
-//     updateViewType,
-//     updateHeaderTitle
-//   }) => 
-// {
      
-  // const [state, setState] = useState('')
   const [state, setState] = React.useState('')
-  // const dispatch = useDispatch();
+
 
   const updateSearchTerm = e => {
     setState(e.target.value);
   };
 
   const searchSpotify = () => {
-      // searchSongs(state, token);
-      // updateHeaderTitle(state);
       updateViewType(state);
   }
 
@@ -75,6 +65,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-
-// export default connect(mapStateToProps, mapDispatchToProps)(TrackSearch);
 export default TrackSearch;

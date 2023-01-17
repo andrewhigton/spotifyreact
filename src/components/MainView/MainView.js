@@ -15,7 +15,7 @@ import './MainView.css';
     pauseSong  
 
     }) => {
-    console.log(headerTitle);
+    
     return (
     <Fragment>
       {headerTitle === "Albums" ? (

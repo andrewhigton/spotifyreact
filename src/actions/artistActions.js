@@ -19,7 +19,7 @@ export const fetchArtistsError = () => {
 };
 
 export const fetchArtists = (accessToken, artistIds) => {
-  //you have to call this, right? then run another fetch to get the artists 
+
   return dispatch => {
     const request = new Request(`https://api.spotify.com/v1/artists?ids=${artistIds}`, {
       headers: new Headers({
@@ -75,7 +75,7 @@ export const fetchArtistSongs = (artistId, accessToken) => {
       }
       return res.json();
     }).then(res => {
-      // map the response to match that returned from get song request
+ 
       res.items = res.tracks.map(item => {
         return {
           track: item

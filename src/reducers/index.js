@@ -42,12 +42,4 @@ const rootReducer = combineReducers({
 	ui: userinterfaceReducer
 });
 
-// export default persistReducer(persistConfig, rootReducer);
 export default rootReducer;
-
-// export default combineReducers({
-// 	alert,
-// 	auth,
-// 	film,
-// 	profile
-// });

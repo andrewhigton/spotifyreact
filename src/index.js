@@ -5,14 +5,8 @@ import rootReducer from './reducers/reducer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
-// import { persistStore } from 'redux-persist';
 import reportWebVitals from './reportWebVitals';
 import { store, persistor } from './store';
-// import  from './store';
-
-// const store = createStore(rootReducer);
-
-// export const persistor = persistStore(store) 
 
 ReactDOM.render(
   

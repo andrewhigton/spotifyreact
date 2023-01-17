@@ -44,7 +44,6 @@ export const fetchAlbumSongs = (accessToken, id) => {
   
   return dispatch => {
     const request = new Request(`https://api.spotify.com/v1/albums/${id}/tracks`, {
-    // const request = new Request(`https://api.spotify.com/v1/albums/2w1YJXWMIco6EBf0CovvVN/tracks`, {  
       headers: new Headers({
         'Authorization': 'Bearer ' + accessToken
       })

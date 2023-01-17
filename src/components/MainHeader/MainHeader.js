@@ -13,10 +13,11 @@ import { updateViewType } from '../../actions/songActions';
 import './MainHeader.css';
 
 
-const MainHeader = ({user, 
+const MainHeader = ({
+                    headerTitle, 
+                    user, 
                     updateHeaderTitle, 
                     updateViewType, 
-                    headerTitle, 
                     viewType, 
                     token
                   }) => {
@@ -30,7 +31,7 @@ const MainHeader = ({user,
         <div data-test='browse-head'>
           <h3 className='header-title'>{headerTitle}</h3>
           <div className='browse-headers'>
-            <p 
+            <p data-test='click-button'
               className={viewType === 'Featured' ? 'active' : ''} 
               onClick={() => { 
                 updateViewType('Featured'); 
@@ -62,4 +63,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainHeader);
+export default MainHeader;
+// export default connect(mapStateToProps, mapDispatchToProps)(MainHeader);

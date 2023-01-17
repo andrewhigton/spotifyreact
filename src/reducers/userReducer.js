@@ -14,9 +14,14 @@ const initialState = {
   loading: true,
 };
 
-export const userReducer = (state = initialState, action) => {
+//let actions.user.display_name = 'bob';
 
+export const userReducer = (state = initialState, action) => {
+  // console.log(action.user.display_name);
+//how to get action to display user here?
+  
   switch (action.type) {
+
 
   case 'FETCH_USER_SUCCESS':
     return {

@@ -28,7 +28,6 @@ const App = ({
   actionStopSong,
   actionPauseSong,
   actionResumeSong,
-  setToken,
   fetchUser
   }) => {
     
@@ -48,22 +47,26 @@ const App = ({
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = config.API_KEY;
 const redirectUri = 'https://andrewhigton.github.io/spotifyreact/';
-// const redirectUri = 'http://localhost:3000/';
 const scopes = [
   'user-read-private',
   'user-read-email',
+  'playlist-read-private',
+  'playlist-modify-private',
+  'user-library-modify',
+  'user-library-read',
+  'user-read-recently-played',
 ];
 
 useEffect(() => {
   
+
 const hash = getTokenFromUrl();
 
     window.location.hash = "";
     token = hash.access_token;
     if (!token) {
         window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true&redirect_uri=${redirectUri}`
-      // window.location.href = `${authEndpoint}?client_id=${clientId}&scope=${scopes.join("%20")}&response_type=token&show_dialog=false&redirect_uri=http://localhost:3000/callback/`
-      
+    
             } else {
       setToken(token);
       fetchUser(token);
@@ -122,8 +125,8 @@ const hash = getTokenFromUrl();
     return (
       
       
-      <div className='component-app'>
-        <div className='app-container'>
+      <div data-test='component-app' className='component-app'>
+        <div  className='app-container'>
           <div className='left-side-section'>
             <SideMenu />
           </div>
@@ -136,7 +139,7 @@ const hash = getTokenFromUrl();
                 <p>{user}</p>                
               </Fragment> :
               <Fragment>
-                <LoginHeader/>
+                <LoginHeader data-test='login-head'/>
               </Fragment> 
               }
               <MainView 
@@ -147,7 +150,7 @@ const hash = getTokenFromUrl();
               </Fragment>
             </div>
           </div>
-          <Footer 
+          <Footer data-test='footer-component'
             stopSong={stopSong}
             pauseSong={pauseSong}
             resumeSong={resumeSong}
@@ -181,4 +184,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 
+// export default App;
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import SongControls from '../SongControls/SongControls';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateVolume } from '../../actions/soundActions';
@@ -54,20 +53,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VolumeControls);
-
-
-
-// const VolumeControls = () => {
-
-
-//   const updateVolume = e => {
-//     this.setState({
-//       volume: e.target.value
-//     });
-
-//     this.props.updateVolume(Math.ceil(e.target.value / 10) * 10);
-//   };
-
-
-
-// }

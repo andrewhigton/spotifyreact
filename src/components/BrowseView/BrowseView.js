@@ -16,20 +16,10 @@ import './BrowseView.css';
     addPlaylistItem,
     user
      }) => {
-// console.log(browse);
-// console.log(token);
-// console.log(user);
-  // const view = useSelector(state => state.view); 
 
-  // let browse = ['train', 'agile','party' ] ;
-  // browse = ['train', 'agile','party' ] ;
   let browseView;
   if (browse) { 
     
-    //how to pass state into this with a test? check bonnie code 
-    //can redner if you hard code it. 
-    //then, how to measure it in terms of length?   
-
     browseView = browse.map((item, i) => {
       // console.log(item);
       const getPlaylistSongs = () => { 
@@ -40,10 +30,9 @@ import './BrowseView.css';
       return (
         <div>
           <li data-test='playlist-titles' key={i} onClick={getPlaylistSongs} className='category-item' key={i}>
-            <div className='category-image'>
-              {/*<img alt='category' src={item.icons ? item.icons[0].url : item.images[0].url} />*/}
+            <div className='category-image'>   
                 <p className='category-name'>{item}</p>
-                {/*<p className='category-name'>{item.name}</p>*/}
+     
             </div>
           </li>
         </div>
@@ -75,10 +64,8 @@ const mapDispatchToProps = (dispatch) => {
       return {
       fetchPlaylistSongs: (owner, item, token) => dispatch(fetchPlaylistSongs(owner, item, token)),
       updateHeaderTitle: (item) => dispatch(updateHeaderTitle(item)),
-      // addPlaylistItem,
-      // fetchCategories: () => dispatch(fetchFeatured(token, dispatch)),
     }
   };
 
-export default BrowseView;
-// export default connect(mapStateToProps, mapDispatchToProps)(BrowseView);
+// export default BrowseView;
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseView);

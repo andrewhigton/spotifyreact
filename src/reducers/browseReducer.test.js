@@ -2,7 +2,6 @@ import browseReducer from './browseReducer';
 
 test.skip('when previous state is undefined, return false', () => {
   const newState = browseReducer(undefined, {});
-  // expect(newState).toEqual({ 'featured': undefined, 'type': 'FETCH_FEATURED_SUCCESS' })
   expect(newState).toStrictEqual({});
 });
 

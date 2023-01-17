@@ -4,102 +4,85 @@ import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { Provider } from "react-redux";
 import { findByTestAttr, storeFactory } from '../test/testUtils';
 import App from './App';
-// import hookActions from './actions/hookActions';
-jest.mock('./actions/browseActions');
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import { setToken as mockSetToken } from "./actions/tokenActions";
 import { fetchFeatured as mockFetchFeatured } from "./actions/browseActions";
+
+jest.mock('./actions/browseActions');
+jest.mock('./actions/tokenActions');
 
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
+const middlewares = [thunk]
+const mockStore = configureMockStore(middlewares)
 
-const mockGetSecretWord = jest.fn();
-
-// const setUp = () => {
-// 	return shallow(<App />)
-// }
-
-// const setup = () => {
-//   const store = storeFactory();
-//   return mount(
-//     <Provider store={store}>
-//       <App />
-//     </Provider>
-//   );
-// };
-
-
-const setUp = (initialState={}) => {
-  const store = storeFactory(initialState)
-  const wrapper = shallow(<App store={store} /> );
+const setup = (initialState={
+      browse: {},
+  user: {},
+  token: {},
+  search: {},
+  songs: {},
+  albums: {},
+  artists: {},
+  playlist: {},
+  sound: {},
+  ui: {}  
+}) => {
+  const store = mockStore(initialState)
+  const wrapper = mount(<Provider store={store}><App /></Provider> );
 } 
 
-test.skip('App renders without error', () => {
-  const wrapper = setUp();
+test('App renders without error', () => {
+  const wrapper = setup();
   const appComponent = findByTestAttr(wrapper, 'component-app')
   expect(appComponent).toHaveLength(1);
-  // expect(App).toHaveLength(1);
 });
 
-// test('Login header renders without error', () => {
-//   const wrapper = setup();
-//   const loginComponent = findByTestAttr(wrapper, 'login-head')
-//   expect(loginComponent.length).toBe(1);
-// });
+test('Login header renders without error', () => {
+  const wrapper = setup();
+  const loginComponent = findByTestAttr(wrapper, 'login-head')
+  expect(loginComponent.length).toBe(1);
+});
 
-// test('MainHeader header renders without error', () => {
-//   const wrapper = setup();
-//   const headerComponent = findByTestAttr(wrapper, 'main-head')
-//   expect(headerComponent.length).toBe(1);
-// });
+test('MainHeader header renders without error', () => {
+  const wrapper = setup();
+  const headerComponent = findByTestAttr(wrapper, 'main-head')
+  expect(headerComponent.length).toBe(1);
+});
 
-// test('Footer renders without error', () => {
-//   const wrapper = setUp();
-//   const component = findByTestAttr(wrapper, 'footer-component')
-//   expect(component.length).toBe(1);
-// });
+test('Footer renders without error', () => {
+  const wrapper = setup();
+  const component = findByTestAttr(wrapper, 'footer-component')
+  expect(component.length).toBe(1);
+});
 
-
-
-// describe('fetchFeatured calls', () => {
-	
-//      beforeEach(() => {
-//      mockFetchFeatured.mockClear();
-//    })
-
-//   test('fetchFeatured gets called on App mount', () => {
-// 		const wrapper = setup();
-// 		//check to see if secret word was called
-	
-//     expect(mockFetchFeatured).toHaveBeenCalled();
-// 		// expect(mockFetchFeatured).toStrictEqual({});
-// 	})
-// 	test('fetchFeatured updates on App update', () => {
-// 		const wrapper = setup();
-// 		mockFetchFeatured.mockClear();
-// 		//wrapper.update doesn't trigger update
-// 		wrapper.setProps();
-
-// 		expect(mockFetchFeatured).not.toHaveBeenCalled();
-// 	})
-// })
+const setup1 = () => {
+  const store = storeFactory();
+  return mount(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
 
 
-// describe('secretWord is not null', () => {
-	
-// 	let wrapper;
-//   	beforeEach(() => {
-//   		wrapper = setUp('party');
-//   	})
+
+describe('setToken', () => {
+  
+    let wrapper;
+    
+    beforeEach(() => {
+      mockSetToken.mockClear();    
+    })
 
 
-// 	test('renders app when secret word is not null', () => {
-// 		const appComponent = findByTestAttr(wrapper, 'component-app');
-// 		expect(appComponent.exists()).toBe(true);
-	
-// 	})
-// 	test('does not render spinner when secretWord is not null', () => {
-// 		const spinnerComponent = findByTestAttr(wrapper, 'spinner');
-// 		expect(spinnerComponent.exists()).toBe(false)
+  test.skip('set token on app mount', () => {
+    const wrapper = setup1();
+    expect(mockSetToken).toHaveBeenCalledTimes(1);
+  })
 
-// 	})
-// })
+})
+
+

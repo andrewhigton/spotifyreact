@@ -134,23 +134,3 @@ export const fetchFeatured = (accessToken) => {
     });
   };
 };
-
-//   try {
-//       axios.get('https://api.spotify.com/v1/browse/featured-playlists', {
-//       headers: {
-//               'Accept': 'application/json',
-//               'Content-Type': 'text/plain',
-//               'Authorization': 'Bearer '+ accessToken
-//                 }
-//               })  
-//               .then((res) => {
-//                 let categoriesData = res.data.playlists.items;
-//               
-//                 fetchFeaturedSuccess(categoriesData)
-//               })
-//       } catch(err) {
-//       dispatch({
-//         type: fetchCategoriesError(err)
-//       })
-//     } 
-// };

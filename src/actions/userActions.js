@@ -1,13 +1,5 @@
-// import axios from 'axios';
-
-// import { 
-//   FETCH_USER_SUCCESS,
-//   FETCH_USER_ERROR,
-//   LOGOUT_USER
-// } from './actionTypes'
-
 export const fetchUserSuccess = (user) => {
-  // console.log(user)
+
   return{
     type: 'FETCH_USER_SUCCESS',
     user: user
@@ -42,27 +34,6 @@ export const fetchUser = (accessToken, dispatch) => {
     });   
   };
 };
-
-    // try {
-    //   axios.get('https://api.spotify.com/v1/me', {
-    //   headers: {
-    //           'Authorization': 'Bearer '+ accessToken
-    //             }
-    //           })  
-    //           .then((response) => {
-    //             let userName = response.data.display_name;
-                
-    //               dispatch({
-    //                 type: 'FETCH_USER_SUCCESS',
-    //                 user: userName
-    //               })
-    //             })
-    //             } catch(err) {
-    //             dispatch({
-    //               type: 'FETCH_USER_ERROR'
-    //             })
-    //         }  
-    //       }
 
 export const logoutUser = () => {
   
